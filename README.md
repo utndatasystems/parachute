@@ -1,4 +1,4 @@
-# Parachute: Single-Pass Bi-Directional Information Passing.
+# Parachute: Single-Pass Bi-Directional Information Passing
 
 If you just want to run JOB, follow these steps.
 
