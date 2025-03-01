@@ -26,7 +26,7 @@ https://github.com/stoianmihail/duckdb-parachute/tree/stoian-card-est
 
 ## SIP repository
 
-We adapt Andi Zimmerer's implementation of SIP in DuckDB v1.2: https://github.com/andizimmerer/duckdb/tree/azimmerer/sideways-information-passingm, as follows:
+We adapt Andi Zimmerer's implementation of SIP in DuckDB v1.2: https://github.com/andizimmerer/duckdb/tree/azimmerer/sideways-information-passing, as follows:
 1. Bound the bloom-filter size (this avoids an OS-`kill` due to excessive allocation in CEB): https://github.com/utndatasystems/duckdb-adaptive-sip/tree/stoian-adaptive-sip.
 2. Frozen plans for SIP: https://github.com/utndatasystems/duckdb-adaptive-sip/tree/stoian-adaptive-sip
 
