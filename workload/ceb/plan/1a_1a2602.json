@@ -1,0 +1,385 @@
+{
+  "name": "UNGROUPED_AGGREGATE",
+  "children": [
+    {
+      "name": "HASH_JOIN",
+      "children": [
+        {
+          "name": "FILTER",
+          "children": [
+            {
+              "name": "PROJECTION",
+              "children": [
+                {
+                  "name": "FILTER",
+                  "children": [
+                    {
+                      "name": "SEQ_SCAN ",
+                      "children": [],
+                      "extra_info": {
+                        "Table": "name",
+                        "Type": "Sequential Scan",
+                        "Projections": [
+                          "id",
+                          "gender"
+                        ],
+                        "Estimated Cardinality": "4167491"
+                      }
+                    }
+                  ],
+                  "extra_info": {
+                    "Expression": "((gender IS NULL) OR (gender = 'm'))",
+                    "Estimated Cardinality": "833498"
+                  }
+                }
+              ],
+              "extra_info": {
+                "Projections": "#0",
+                "Estimated Cardinality": "833498"
+              }
+            }
+          ],
+          "extra_info": {
+            "Expression": "(id <= 4061926)",
+            "Estimated Cardinality": "833498"
+          }
+        },
+        {
+          "name": "HASH_JOIN",
+          "children": [
+            {
+              "name": "HASH_JOIN",
+              "children": [
+                {
+                  "name": "SEQ_SCAN ",
+                  "children": [],
+                  "extra_info": {
+                    "Table": "cast_info",
+                    "Type": "Sequential Scan",
+                    "Projections": [
+                      "movie_id",
+                      "person_id",
+                      "role_id"
+                    ],
+                    "Estimated Cardinality": "36244344"
+                  }
+                },
+                {
+                  "name": "PROJECTION",
+                  "children": [
+                    {
+                      "name": "FILTER",
+                      "children": [
+                        {
+                          "name": "HASH_JOIN",
+                          "children": [
+                            {
+                              "name": "FILTER",
+                              "children": [
+                                {
+                                  "name": "HASH_JOIN",
+                                  "children": [
+                                    {
+                                      "name": "PROJECTION",
+                                      "children": [
+                                        {
+                                          "name": "FILTER",
+                                          "children": [
+                                            {
+                                              "name": "HASH_JOIN",
+                                              "children": [
+                                                {
+                                                  "name": "SEQ_SCAN ",
+                                                  "children": [],
+                                                  "extra_info": {
+                                                    "Table": "movie_info",
+                                                    "Type": "Sequential Scan",
+                                                    "Projections": [
+                                                      "movie_id",
+                                                      "info_type_id",
+                                                      "info"
+                                                    ],
+                                                    "Filters": "optional: info IN ('Burbank, California, USA', 'Chicago, Illinois, USA', 'Dijon Street, Warner Brothers Burbank Studios - 4000 Warner Boulevard, Burbank, California, USA', 'Malta', 'Oakland, California, USA', 'Santa Clarita, California, USA', 'University of British Columbia, Robson Square Campus - 800 Robson Street, Vancouver, British Columbia, Canada', 'West Hollywood, California, USA')",
+                                                    "Estimated Cardinality": "14835720"
+                                                  }
+                                                },
+                                                {
+                                                  "name": "COLUMN_DATA_SCAN",
+                                                  "children": [],
+                                                  "extra_info": {
+                                                    "Estimated Cardinality": "0"
+                                                  }
+                                                }
+                                              ],
+                                              "extra_info": {
+                                                "Join Type": "MARK",
+                                                "Conditions": "info = #0",
+                                                "Estimated Cardinality": "14835720"
+                                              }
+                                            }
+                                          ],
+                                          "extra_info": {
+                                            "Expression": "IN (...)",
+                                            "Estimated Cardinality": "2967144"
+                                          }
+                                        }
+                                      ],
+                                      "extra_info": {
+                                        "Projections": [
+                                          "#0",
+                                          "#1"
+                                        ],
+                                        "Estimated Cardinality": "2967144"
+                                      }
+                                    },
+                                    {
+                                      "name": "HASH_JOIN",
+                                      "children": [
+                                        {
+                                          "name": "HASH_JOIN",
+                                          "children": [
+                                            {
+                                              "name": "FILTER",
+                                              "children": [
+                                                {
+                                                  "name": "SEQ_SCAN ",
+                                                  "children": [],
+                                                  "extra_info": {
+                                                    "Table": "title",
+                                                    "Type": "Sequential Scan",
+                                                    "Projections": [
+                                                      "id",
+                                                      "kind_id"
+                                                    ],
+                                                    "Filters": "production_year>=1990 AND production_year<=2015",
+                                                    "Estimated Cardinality": "505662"
+                                                  }
+                                                }
+                                              ],
+                                              "extra_info": {
+                                                "Expression": "(id <= 2526430)",
+                                                "Estimated Cardinality": "505662"
+                                              }
+                                            },
+                                            {
+                                              "name": "HASH_JOIN",
+                                              "children": [
+                                                {
+                                                  "name": "FILTER",
+                                                  "children": [
+                                                    {
+                                                      "name": "PROJECTION",
+                                                      "children": [
+                                                        {
+                                                          "name": "FILTER",
+                                                          "children": [
+                                                            {
+                                                              "name": "SEQ_SCAN ",
+                                                              "children": [],
+                                                              "extra_info": {
+                                                                "Table": "movie_info",
+                                                                "Type": "Sequential Scan",
+                                                                "Projections": [
+                                                                  "movie_id",
+                                                                  "info_type_id",
+                                                                  "info"
+                                                                ],
+                                                                "Filters": "optional: info IN ('CONT: Flipped Shot: When Chip and Kim deliver the chairs in Mto Wa Mbu in the episode \"Are You Sure This Is Safe?\" theres a child wearing a Pokemon shirt which is shown as a mirrored image. This is done on a lot on reality shows where licensed clothing is visible in order to get around licensing issues. Also, its easier to flip the image than to blur it out.', 'FACT: As teams are leaving Singapore you can see that the name of the airport in the graphic is Changai Airport, when in fact the airport in Singapore is Changi Airport', 'FACT: In the leg from Switzerland to Malaysia, the Amazing Yellow Line charts a plane ride from Geneva to Paris to Kuala Lumpur. However, according to the map, Paris is placed in the Iberian peninsula near Madrid, Spain.', 'FACT: When the teams are travelling from Argentina to Mozambique in the fourth episode of the All-Stars series, Phil Keoghans voice-over states that there are no international flights out of Ushuaia Airport. However, at what the on-screen caption claims is Ushuaia Airport, a Qantas plane is clearly visible. Qantas is Australias main international airline and would not be present at a solely domestic airport in Argentina (Qantas do, however, fly to Buenos Aires, so the scene was presumably filmed at Buenos Aires international airport).')",
+                                                                "Estimated Cardinality": "14835720"
+                                                              }
+                                                            }
+                                                          ],
+                                                          "extra_info": {
+                                                            "Expression": "((info = 'CONT: Flipped Shot: When Chip and Kim deliver the chairs in Mto Wa Mbu in the episode \"Are You Sure This Is Safe?\" theres a child wearing a Pokemon shirt which is shown as a mirrored image. This is done on a lot on reality shows where licensed clothing is visible in order to get around licensing issues. Also, its easier to flip the image than to blur it out.') OR (info = 'FACT: As teams are leaving Singapore you can see that the name of the airport in the graphic is Changai Airport, when in fact the airport in Singapore is Changi Airport') OR (info = 'FACT: In the leg from Switzerland to Malaysia, the Amazing Yellow Line charts a plane ride from Geneva to Paris to Kuala Lumpur. However, according to the map, Paris is placed in the Iberian peninsula near Madrid, Spain.') OR (info = 'FACT: When the teams are travelling from Argentina to Mozambique in the fourth episode of the All-Stars series, Phil Keoghans voice-over states that there are no international flights out of Ushuaia Airport. However, at what the on-screen caption claims is Ushuaia Airport, a Qantas plane is clearly visible. Qantas is Australias main international airline and would not be present at a solely domestic airport in Argentina (Qantas do, however, fly to Buenos Aires, so the scene was presumably filmed at Buenos Aires international airport).'))",
+                                                            "Estimated Cardinality": "2967144"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "extra_info": {
+                                                        "Projections": [
+                                                          "#0",
+                                                          "#1"
+                                                        ],
+                                                        "Estimated Cardinality": "2967144"
+                                                      }
+                                                    }
+                                                  ],
+                                                  "extra_info": {
+                                                    "Expression": "(info_type_id BETWEEN 13 AND 13)",
+                                                    "Estimated Cardinality": "2967144"
+                                                  }
+                                                },
+                                                {
+                                                  "name": "SEQ_SCAN ",
+                                                  "children": [],
+                                                  "extra_info": {
+                                                    "Table": "info_type",
+                                                    "Type": "Sequential Scan",
+                                                    "Projections": "id",
+                                                    "Filters": "id=13",
+                                                    "Estimated Cardinality": "1"
+                                                  }
+                                                }
+                                              ],
+                                              "extra_info": {
+                                                "Join Type": "INNER",
+                                                "Conditions": "info_type_id = id",
+                                                "Estimated Cardinality": "26257"
+                                              }
+                                            }
+                                          ],
+                                          "extra_info": {
+                                            "Join Type": "INNER",
+                                            "Conditions": "id = movie_id",
+                                            "Estimated Cardinality": "6188"
+                                          }
+                                        },
+                                        {
+                                          "name": "PROJECTION",
+                                          "children": [
+                                            {
+                                              "name": "FILTER",
+                                              "children": [
+                                                {
+                                                  "name": "SEQ_SCAN ",
+                                                  "children": [],
+                                                  "extra_info": {
+                                                    "Table": "kind_type",
+                                                    "Type": "Sequential Scan",
+                                                    "Projections": [
+                                                      "id",
+                                                      "kind"
+                                                    ],
+                                                    "Filters": "optional: kind IN ('tv movie', 'tv series')",
+                                                    "Estimated Cardinality": "7"
+                                                  }
+                                                }
+                                              ],
+                                              "extra_info": {
+                                                "Expression": "((kind = 'tv movie') OR (kind = 'tv series'))",
+                                                "Estimated Cardinality": "1"
+                                              }
+                                            }
+                                          ],
+                                          "extra_info": {
+                                            "Projections": "#0",
+                                            "Estimated Cardinality": "1"
+                                          }
+                                        }
+                                      ],
+                                      "extra_info": {
+                                        "Join Type": "INNER",
+                                        "Conditions": "kind_id = id",
+                                        "Estimated Cardinality": "884"
+                                      }
+                                    }
+                                  ],
+                                  "extra_info": {
+                                    "Join Type": "INNER",
+                                    "Conditions": "movie_id = id",
+                                    "Estimated Cardinality": "1222"
+                                  }
+                                }
+                              ],
+                              "extra_info": {
+                                "Expression": "(info_type_id BETWEEN 18 AND 18)",
+                                "Estimated Cardinality": "1222"
+                              }
+                            },
+                            {
+                              "name": "SEQ_SCAN ",
+                              "children": [],
+                              "extra_info": {
+                                "Table": "info_type",
+                                "Type": "Sequential Scan",
+                                "Projections": "id",
+                                "Filters": "id=18",
+                                "Estimated Cardinality": "1"
+                              }
+                            }
+                          ],
+                          "extra_info": {
+                            "Join Type": "INNER",
+                            "Conditions": "info_type_id = id",
+                            "Estimated Cardinality": "10"
+                          }
+                        }
+                      ],
+                      "extra_info": {
+                        "Expression": "(id <= 2525975)",
+                        "Estimated Cardinality": "10"
+                      }
+                    }
+                  ],
+                  "extra_info": {
+                    "Projections": "#0",
+                    "Estimated Cardinality": "10"
+                  }
+                }
+              ],
+              "extra_info": {
+                "Join Type": "INNER",
+                "Conditions": "movie_id = id",
+                "Estimated Cardinality": "182"
+              }
+            },
+            {
+              "name": "FILTER",
+              "children": [
+                {
+                  "name": "PROJECTION",
+                  "children": [
+                    {
+                      "name": "FILTER",
+                      "children": [
+                        {
+                          "name": "SEQ_SCAN ",
+                          "children": [],
+                          "extra_info": {
+                            "Table": "role_type",
+                            "Type": "Sequential Scan",
+                            "Projections": [
+                              "id",
+                              "role"
+                            ],
+                            "Filters": "optional: role IN ('composer', 'editor', 'producer', 'production designer')",
+                            "Estimated Cardinality": "12"
+                          }
+                        }
+                      ],
+                      "extra_info": {
+                        "Expression": "((role = 'composer') OR (role = 'editor') OR (role = 'producer') OR (role = 'production designer'))",
+                        "Estimated Cardinality": "2"
+                      }
+                    }
+                  ],
+                  "extra_info": {
+                    "Projections": "#0",
+                    "Estimated Cardinality": "2"
+                  }
+                }
+              ],
+              "extra_info": {
+                "Expression": "(id <= 11)",
+                "Estimated Cardinality": "2"
+              }
+            }
+          ],
+          "extra_info": {
+            "Join Type": "INNER",
+            "Conditions": "role_id = id",
+            "Estimated Cardinality": "30"
+          }
+        }
+      ],
+      "extra_info": {
+        "Join Type": "INNER",
+        "Conditions": "id = person_id",
+        "Estimated Cardinality": "6"
+      }
+    }
+  ],
+  "extra_info": {
+    "Aggregates": "count_star()"
+  }
+}

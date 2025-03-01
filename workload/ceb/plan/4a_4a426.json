@@ -1,0 +1,307 @@
+{
+  "name": "UNGROUPED_AGGREGATE",
+  "children": [
+    {
+      "name": "HASH_JOIN",
+      "children": [
+        {
+          "name": "HASH_JOIN",
+          "children": [
+            {
+              "name": "FILTER",
+              "children": [
+                {
+                  "name": "PROJECTION",
+                  "children": [
+                    {
+                      "name": "FILTER",
+                      "children": [
+                        {
+                          "name": "HASH_JOIN",
+                          "children": [
+                            {
+                              "name": "SEQ_SCAN ",
+                              "children": [],
+                              "extra_info": {
+                                "Table": "cast_info",
+                                "Type": "Sequential Scan",
+                                "Projections": [
+                                  "person_id",
+                                  "role_id",
+                                  "note"
+                                ],
+                                "Estimated Cardinality": "36244344"
+                              }
+                            },
+                            {
+                              "name": "COLUMN_DATA_SCAN",
+                              "children": [],
+                              "extra_info": {
+                                "Estimated Cardinality": "0"
+                              }
+                            }
+                          ],
+                          "extra_info": {
+                            "Join Type": "MARK",
+                            "Conditions": "note = #0",
+                            "Estimated Cardinality": "36244344"
+                          }
+                        }
+                      ],
+                      "extra_info": {
+                        "Expression": "(IN (...) OR (note IS NULL))",
+                        "Estimated Cardinality": "7248868"
+                      }
+                    }
+                  ],
+                  "extra_info": {
+                    "Projections": [
+                      "#0",
+                      "#1"
+                    ],
+                    "Estimated Cardinality": "7248868"
+                  }
+                }
+              ],
+              "extra_info": {
+                "Expression": "(person_id >= 4)",
+                "Estimated Cardinality": "7248868"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "children": [
+                {
+                  "name": "FILTER",
+                  "children": [
+                    {
+                      "name": "HASH_JOIN",
+                      "children": [
+                        {
+                          "name": "SEQ_SCAN ",
+                          "children": [],
+                          "extra_info": {
+                            "Table": "aka_name",
+                            "Type": "Sequential Scan",
+                            "Projections": "person_id",
+                            "Estimated Cardinality": "901343"
+                          }
+                        },
+                        {
+                          "name": "HASH_JOIN",
+                          "children": [
+                            {
+                              "name": "FILTER",
+                              "children": [
+                                {
+                                  "name": "PROJECTION",
+                                  "children": [
+                                    {
+                                      "name": "FILTER",
+                                      "children": [
+                                        {
+                                          "name": "HASH_JOIN",
+                                          "children": [
+                                            {
+                                              "name": "SEQ_SCAN ",
+                                              "children": [],
+                                              "extra_info": {
+                                                "Table": "name",
+                                                "Type": "Sequential Scan",
+                                                "Projections": [
+                                                  "id",
+                                                  "gender",
+                                                  "name_pcode_nf"
+                                                ],
+                                                "Filters": "optional: name_pcode_nf IN ('A4253', 'A5362', 'A6532', 'C6231', 'C6235', 'M6216', 'R1634', 'R516', 'R5316', 'S3162', 'S3521')",
+                                                "Estimated Cardinality": "4167491"
+                                              }
+                                            },
+                                            {
+                                              "name": "COLUMN_DATA_SCAN",
+                                              "children": [],
+                                              "extra_info": {
+                                                "Estimated Cardinality": "0"
+                                              }
+                                            }
+                                          ],
+                                          "extra_info": {
+                                            "Join Type": "MARK",
+                                            "Conditions": "name_pcode_nf = #0",
+                                            "Estimated Cardinality": "4167491"
+                                          }
+                                        }
+                                      ],
+                                      "extra_info": {
+                                        "Expression": "(IN (...) AND (gender IS NULL))",
+                                        "Estimated Cardinality": "833498"
+                                      }
+                                    }
+                                  ],
+                                  "extra_info": {
+                                    "Projections": "#0",
+                                    "Estimated Cardinality": "833498"
+                                  }
+                                }
+                              ],
+                              "extra_info": {
+                                "Expression": "(id BETWEEN 4 AND 4167489)",
+                                "Estimated Cardinality": "833498"
+                              }
+                            },
+                            {
+                              "name": "PROJECTION",
+                              "children": [
+                                {
+                                  "name": "FILTER",
+                                  "children": [
+                                    {
+                                      "name": "HASH_JOIN",
+                                      "children": [
+                                        {
+                                          "name": "SEQ_SCAN ",
+                                          "children": [],
+                                          "extra_info": {
+                                            "Table": "person_info",
+                                            "Type": "Sequential Scan",
+                                            "Projections": [
+                                              "person_id",
+                                              "info_type_id"
+                                            ],
+                                            "Filters": "info_type_id>=19 AND info_type_id<=19",
+                                            "Estimated Cardinality": "2963664"
+                                          }
+                                        },
+                                        {
+                                          "name": "SEQ_SCAN ",
+                                          "children": [],
+                                          "extra_info": {
+                                            "Table": "info_type",
+                                            "Type": "Sequential Scan",
+                                            "Projections": "id",
+                                            "Filters": "id=19",
+                                            "Estimated Cardinality": "1"
+                                          }
+                                        }
+                                      ],
+                                      "extra_info": {
+                                        "Join Type": "INNER",
+                                        "Conditions": "info_type_id = id",
+                                        "Estimated Cardinality": "26227"
+                                      }
+                                    }
+                                  ],
+                                  "extra_info": {
+                                    "Expression": "(person_id <= 4167489)",
+                                    "Estimated Cardinality": "26227"
+                                  }
+                                }
+                              ],
+                              "extra_info": {
+                                "Projections": "#0",
+                                "Estimated Cardinality": "26227"
+                              }
+                            }
+                          ],
+                          "extra_info": {
+                            "Join Type": "INNER",
+                            "Conditions": "id = person_id",
+                            "Estimated Cardinality": "5286"
+                          }
+                        }
+                      ],
+                      "extra_info": {
+                        "Join Type": "INNER",
+                        "Conditions": "person_id = id",
+                        "Estimated Cardinality": "1152"
+                      }
+                    }
+                  ],
+                  "extra_info": {
+                    "Expression": "(id <= 4061926)",
+                    "Estimated Cardinality": "1152"
+                  }
+                }
+              ],
+              "extra_info": {
+                "Projections": "#1",
+                "Estimated Cardinality": "1152"
+              }
+            }
+          ],
+          "extra_info": {
+            "Join Type": "INNER",
+            "Conditions": "person_id = id",
+            "Estimated Cardinality": "2020"
+          }
+        },
+        {
+          "name": "FILTER",
+          "children": [
+            {
+              "name": "PROJECTION",
+              "children": [
+                {
+                  "name": "FILTER",
+                  "children": [
+                    {
+                      "name": "HASH_JOIN",
+                      "children": [
+                        {
+                          "name": "SEQ_SCAN ",
+                          "children": [],
+                          "extra_info": {
+                            "Table": "role_type",
+                            "Type": "Sequential Scan",
+                            "Projections": [
+                              "id",
+                              "role"
+                            ],
+                            "Filters": "optional: role IN ('cinematographer', 'composer', 'director', 'editor', 'miscellaneous crew', 'producer', 'production designer', 'writer')",
+                            "Estimated Cardinality": "12"
+                          }
+                        },
+                        {
+                          "name": "COLUMN_DATA_SCAN",
+                          "children": [],
+                          "extra_info": {
+                            "Estimated Cardinality": "0"
+                          }
+                        }
+                      ],
+                      "extra_info": {
+                        "Join Type": "MARK",
+                        "Conditions": "role = #0",
+                        "Estimated Cardinality": "12"
+                      }
+                    }
+                  ],
+                  "extra_info": {
+                    "Expression": "IN (...)",
+                    "Estimated Cardinality": "2"
+                  }
+                }
+              ],
+              "extra_info": {
+                "Projections": "#0",
+                "Estimated Cardinality": "2"
+              }
+            }
+          ],
+          "extra_info": {
+            "Expression": "(id <= 11)",
+            "Estimated Cardinality": "2"
+          }
+        }
+      ],
+      "extra_info": {
+        "Join Type": "INNER",
+        "Conditions": "role_id = id",
+        "Estimated Cardinality": "336"
+      }
+    }
+  ],
+  "extra_info": {
+    "Aggregates": "count_star()"
+  }
+}

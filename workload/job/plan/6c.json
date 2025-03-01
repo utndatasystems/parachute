@@ -1,0 +1,152 @@
+{
+  "name": "UNGROUPED_AGGREGATE",
+  "children": [
+    {
+      "name": "PROJECTION",
+      "children": [
+        {
+          "name": "HASH_JOIN",
+          "children": [
+            {
+              "name": "FILTER",
+              "children": [
+                {
+                  "name": "SEQ_SCAN ",
+                  "children": [],
+                  "extra_info": {
+                    "Table": "name",
+                    "Type": "Sequential Scan",
+                    "Projections": [
+                      "name",
+                      "id"
+                    ],
+                    "Filters": "id<=4061926",
+                    "Estimated Cardinality": "4167491"
+                  }
+                }
+              ],
+              "extra_info": {
+                "Expression": "(name ~~ '%Downey%Robert%')",
+                "Estimated Cardinality": "4167491"
+              }
+            },
+            {
+              "name": "HASH_JOIN",
+              "children": [
+                {
+                  "name": "SEQ_SCAN ",
+                  "children": [],
+                  "extra_info": {
+                    "Table": "cast_info",
+                    "Type": "Sequential Scan",
+                    "Projections": [
+                      "movie_id",
+                      "person_id"
+                    ],
+                    "Filters": "movie_id>=2 AND movie_id<=2525971",
+                    "Estimated Cardinality": "36244344"
+                  }
+                },
+                {
+                  "name": "HASH_JOIN",
+                  "children": [
+                    {
+                      "name": "FILTER",
+                      "children": [
+                        {
+                          "name": "SEQ_SCAN ",
+                          "children": [],
+                          "extra_info": {
+                            "Table": "title",
+                            "Type": "Sequential Scan",
+                            "Projections": [
+                              "id",
+                              "title"
+                            ],
+                            "Filters": "production_year>2014",
+                            "Estimated Cardinality": "505662"
+                          }
+                        }
+                      ],
+                      "extra_info": {
+                        "Expression": "(id BETWEEN 2 AND 2525971)",
+                        "Estimated Cardinality": "505662"
+                      }
+                    },
+                    {
+                      "name": "HASH_JOIN",
+                      "children": [
+                        {
+                          "name": "SEQ_SCAN ",
+                          "children": [],
+                          "extra_info": {
+                            "Table": "movie_keyword",
+                            "Type": "Sequential Scan",
+                            "Projections": [
+                              "keyword_id",
+                              "movie_id"
+                            ],
+                            "Estimated Cardinality": "4523930"
+                          }
+                        },
+                        {
+                          "name": "SEQ_SCAN ",
+                          "children": [],
+                          "extra_info": {
+                            "Table": "keyword",
+                            "Type": "Sequential Scan",
+                            "Projections": [
+                              "keyword",
+                              "id"
+                            ],
+                            "Filters": "keyword='marvel-cinematic-universe'",
+                            "Estimated Cardinality": "2"
+                          }
+                        }
+                      ],
+                      "extra_info": {
+                        "Join Type": "INNER",
+                        "Conditions": "keyword_id = id",
+                        "Estimated Cardinality": "69"
+                      }
+                    }
+                  ],
+                  "extra_info": {
+                    "Join Type": "INNER",
+                    "Conditions": "id = movie_id",
+                    "Estimated Cardinality": "17"
+                  }
+                }
+              ],
+              "extra_info": {
+                "Join Type": "INNER",
+                "Conditions": "movie_id = id",
+                "Estimated Cardinality": "313"
+              }
+            }
+          ],
+          "extra_info": {
+            "Join Type": "INNER",
+            "Conditions": "id = person_id",
+            "Estimated Cardinality": "63"
+          }
+        }
+      ],
+      "extra_info": {
+        "Projections": [
+          "keyword",
+          "name",
+          "title"
+        ],
+        "Estimated Cardinality": "63"
+      }
+    }
+  ],
+  "extra_info": {
+    "Aggregates": [
+      "min(#0)",
+      "min(#1)",
+      "min(#2)"
+    ]
+  }
+}

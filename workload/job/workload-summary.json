@@ -1,0 +1,423 @@
+{
+  "__init__" : {
+    "name" : "job"
+  },
+  "title": {
+    "production_year": {
+      "seen-with": [
+        "cast_info",
+        "movie_info_idx",
+        "movie_keyword",
+        "movie_link",
+        "movie_companies",
+        "complete_cast",
+        "movie_info"
+      ],
+      "__templates__": {
+        "@.production_year > 2000": 1,
+        "@.production_year BETWEEN 2000 AND 2010": 1,
+        "@.production_year > 2014": 1,
+        "@.production_year = 1998": 1,
+        "@.production_year > 2009": 1,
+        "@.production_year > 1950": 1,
+        "@.production_year BETWEEN 2007 AND 2010": 1,
+        "@.production_year BETWEEN 1950 AND 2000": 1,
+        "@.production_year BETWEEN 2008 AND 2014": 1,
+        "@.production_year > 2010": 1,
+        "@.production_year > 2005": 1,
+        "@.production_year > 1990": 1,
+        "@.production_year BETWEEN 2005 AND 2015": 1,
+        "@.production_year >2000": 1,
+        "@.production_year BETWEEN 1980 AND 1984": 1,
+        "@.production_year BETWEEN 1980 AND 2010": 1,
+        "@.production_year BETWEEN 2005 AND 2009": 1,
+        "@.production_year > 2008": 1,
+        "@.production_year BETWEEN 2000 AND 2005": 1,
+        "@.production_year BETWEEN 1950 AND 2010": 1,
+        "@.production_year = 2007": 1,
+        "@.production_year BETWEEN 2005 AND 2008": 1,
+        "@.production_year BETWEEN 2005 AND 2010": 1,
+        "@.production_year BETWEEN 2007 AND 2008": 1,
+        "@.production_year BETWEEN 1980 AND 1995": 1,
+        "@.production_year BETWEEN 2006 AND 2007": 1,
+        "@.production_year >2010": 1
+      }
+    },
+    "episode_nr": {
+      "seen-with": [
+        "cast_info",
+        "movie_keyword",
+        "movie_companies"
+      ],
+      "__templates__": {
+        "@.episode_nr >= 50": 1,
+        "@.episode_nr < 100": 1,
+        "@.episode_nr >= 5": 1
+      }
+    },
+    "title": {
+      "seen-with": [
+        "cast_info",
+        "movie_info_idx",
+        "movie_keyword",
+        "movie_link",
+        "movie_companies",
+        "complete_cast",
+        "movie_info"
+      ],
+      "__templates__": {
+        "(@.title like '%murder%'\n       OR @.title like '%Murder%'\n       OR @.title like '%Mord%')": 1,
+        "(@.title LIKE 'Birdemic%'\n       OR @.title LIKE '%Movie%')": 1,
+        "@.title like 'Vampire%'": 1,
+        "(@.title like '%Freddy%'\n       OR @.title like '%Jason%'\n       OR @.title like 'Saw%')": 1,
+        "@.title like '%Money%'": 1,
+        "@.title = 'Shrek 2'": 1,
+        "@.title != ''": 1,
+        "(@.title LIKE '%Champion%'\n       OR @.title LIKE '%Loser%')": 1,
+        "@.title like '%Kung%Fu%Panda%'": 1,
+        "@.title like 'Kung Fu Panda%'": 1,
+        "(@.title like 'One Piece%'\n       OR @.title like 'Dragon Ball Z%')": 1,
+        "(@.title LIKE 'Champion%'\n       OR @.title LIKE 'Loser%')": 1
+      }
+    }
+  },
+  "cast_info": {
+    "note": {
+      "seen-with": [],
+      "__templates__": {
+        "@.note in ('(voice)',\n                  '(voice: Japanese version)',\n                  '(voice) (uncredited)',\n                  '(voice: English version)')": 1,
+        "@.note = '(voice)'": 1,
+        "@.note in ('(writer)',\n                  '(head writer)',\n                  '(written by)',\n                  '(story)',\n                  '(story editor)')": 1,
+        "@.note in ('(producer)',\n                  '(executive producer)')": 1,
+        "@.note ='(voice: English version)'": 1,
+        "@.note in ('(voice)',\n                  '(voice) (uncredited)',\n                  '(voice: English version)')": 1,
+        "@.note like '%(producer)%'": 1,
+        "@.note like '%(voice)%'": 1,
+        "@.note like '%(uncredited)%'": 1
+      }
+    }
+  },
+  "company_name": {
+    "country_code": {
+      "seen-with": [
+        "movie_companies"
+      ],
+      "__templates__": {
+        "@.country_code ='[us]'": 1,
+        "@.country_code !='[pl]'": 1,
+        "@.country_code != '[us]'": 1,
+        "@.country_code = '[us]'": 1,
+        "@.country_code ='[nl]'": 1,
+        "@.country_code ='[jp]'": 1,
+        "@.country_code = '[nl]'": 1,
+        "@.country_code ='[de]'": 1,
+        "@.country_code ='[sm]'": 1,
+        "@.country_code = '[ru]'": 1
+      }
+    },
+    "name": {
+      "seen-with": [
+        "movie_companies"
+      ],
+      "__templates__": {
+        "(@.name LIKE '%Film%'\n       OR @.name LIKE '%Warner%')": 1,
+        "@.name like 'Lionsgate%'": 1,
+        "@.name = 'YouTube'": 1,
+        "@.name = 'DreamWorks Animation'": 1,
+        "(@.name like '20th Century Fox%'\n       OR @.name like 'Twentieth Century Fox%')": 1
+      }
+    }
+  },
+  "info_type": {
+    "info": {
+      "seen-with": [
+        "person_info",
+        "movie_info_idx",
+        "movie_info"
+      ],
+      "__templates__": {
+        "@.info = 'release dates'": 1,
+        "@.info = 'countries'": 1,
+        "@.info = 'rating'": 1,
+        "@.info = 'genres'": 1,
+        "@.info = 'votes'": 1,
+        "@.info ='rating'": 1,
+        "@.info ='release dates'": 1,
+        "@.info = 'budget'": 1,
+        "@.info = 'top 250 rank'": 1,
+        "@.info ='budget'": 1,
+        "@.info ='bottom 10 rank'": 1,
+        "@.info ='mini biography'": 1,
+        "@.info = 'bottom 10 rank'": 1,
+        "@.info = 'height'": 1,
+        "@.info = 'trivia'": 1
+      }
+    }
+  },
+  "name": {
+    "gender": {
+      "seen-with": [
+        "cast_info",
+        "person_info",
+        "aka_name"
+      ],
+      "__templates__": {
+        "@.gender ='f'": 1,
+        "@.gender = 'm'": 1,
+        "@.gender = 'f'": 1,
+        "@.gender IS NOT NULL": 1,
+        "@.gender='m'": 1,
+        "(@.gender='m'\n       OR (@.gender = 'f'\n           AND @.name LIKE 'A%'))": 1,
+        "(@.gender='m'\n       OR (@.gender = 'f'\n           AND @.name LIKE 'B%'))": 1
+      }
+    },
+    "name": {
+      "seen-with": [
+        "cast_info",
+        "person_info",
+        "aka_name"
+      ],
+      "__templates__": {
+        "@.name LIKE '%Downey%Robert%'": 1,
+        "@.name like '%Angel%'": 1,
+        "@.name LIKE 'Z%'": 1,
+        "@.name like '%Ang%'": 1,
+        "@.name like '%Tim%'": 1,
+        "@.name LIKE '%Bert%'": 1,
+        "@.name not like '%Yu%'": 1,
+        "@.name like '%Yo%'": 1,
+        "@.name like '%An%'": 1,
+        "(@.gender='m'\n       OR (@.gender = 'f'\n           AND @.name LIKE 'A%'))": 1,
+        "@.name LIKE '%B%'": 1,
+        "@.name LIKE 'X%'": 1,
+        "(@.gender='m'\n       OR (@.gender = 'f'\n           AND @.name LIKE 'B%'))": 1,
+        "@.name LIKE 'B%'": 1
+      }
+    },
+    "name_pcode_cf": {
+      "seen-with": [
+        "cast_info",
+        "person_info",
+        "aka_name"
+      ],
+      "__templates__": {
+        "@.name_pcode_cf LIKE 'D%'": 1,
+        "@.name_pcode_cf BETWEEN 'A' AND 'F'": 1
+      }
+    }
+  },
+  "role_type": {
+    "role": {
+      "seen-with": [
+        "cast_info"
+      ],
+      "__templates__": {
+        "@.role ='actress'": 1,
+        "@.role ='costume designer'": 1,
+        "@.role ='writer'": 1,
+        "@.role = 'actor'": 1
+      }
+    }
+  },
+  "link_type": {
+    "link": {
+      "seen-with": [
+        "movie_link"
+      ],
+      "__templates__": {
+        "@.link LIKE '%follow%'": 1,
+        "@.link ='features'": 1,
+        "@.link in ('references',\n                  'referenced in',\n                  'features',\n                  'featured in')": 1,
+        "@.link in ('sequel',\n                  'follows',\n                  'followed by')": 1,
+        "@.link LIKE '%follows%'": 1
+      }
+    }
+  },
+  "keyword": {
+    "keyword": {
+      "seen-with": [
+        "movie_keyword"
+      ],
+      "__templates__": {
+        "@.keyword ='sequel'": 1,
+        "@.keyword in ('superhero',\n                    'sequel',\n                    'second-part',\n                    'marvel-comics',\n                    'based-on-comic',\n                    'tv-special',\n                    'fight',\n                    'violence')": 1,
+        "@.keyword in ('murder',\n                    'murder-in-title',\n                    'blood',\n                    'violence')": 1,
+        "@.keyword in ('sequel',\n                    'revenge',\n                    'based-on-novel')": 1,
+        "@.keyword ='10,000-mile-club'": 1,
+        "@.keyword in ('murder',\n                    'violence',\n                    'blood',\n                    'gore',\n                    'death',\n                    'female-nudity',\n                    'hospital')": 1,
+        "@.keyword like '%sequel%'": 1,
+        "@.keyword in ('nerd',\n                    'loner',\n                    'alienation',\n                    'dignity')": 1,
+        "@.keyword ='character-name-in-title'": 1,
+        "@.keyword = 'marvel-cinematic-universe'": 1,
+        "@.keyword IS NOT NULL": 1,
+        "@.keyword in ('murder',\n                    'murder-in-title')": 1,
+        "@.keyword in ('hero',\n                    'martial-arts',\n                    'hand-to-hand-combat')": 1,
+        "@.keyword in ('murder',\n                    'blood',\n                    'gore',\n                    'death',\n                    'female-nudity')": 1,
+        "@.keyword in ('superhero',\n                    'marvel-comics',\n                    'based-on-comic',\n                    'tv-special',\n                    'fight',\n                    'violence',\n                    'magnet',\n                    'web',\n                    'claw',\n                    'laser')": 1,
+        "@.keyword = 'computer-animation'": 1,
+        "@.keyword in ('hero',\n                    'martial-arts',\n                    'hand-to-hand-combat',\n                    'computer-animated-movie')": 1,
+        "@.keyword in ('superhero',\n                    'marvel-comics',\n                    'based-on-comic',\n                    'fight')": 1
+      }
+    }
+  },
+  "movie_companies": {
+    "note": {
+      "seen-with": [],
+      "__templates__": {
+        "@.note IS NULL": 1,
+        "@.note not like '%(USA)%'": 1,
+        "@.note like '%(200%)%'": 1,
+        "@.note IS NOT NULL": 1,
+        "(@.note like '%(USA)%'\n       OR @.note like '%(worldwide)%')": 1,
+        "@.note like '%(USA)%'": 1,
+        "@.note not like '%(TV)%'": 1,
+        "(@.note like '%(co-production)%'\n       OR @.note like '%(presents)%')": 1,
+        "@.note not like '%(as Metro-Goldwyn-Mayer Pictures)%'": 1,
+        "@.note like '%(Japan)%'": 1,
+        "@.note like '%(worldwide)%'": 1,
+        "@.note like '%(France)%'": 1,
+        "@.note like '%(theatrical)%'": 1,
+        "@.note like '%(VHS)%'": 1,
+        "@.note like '%(1994)%'": 1,
+        "@.note like '%(Blu-ray)%'": 1,
+        "(@.note like '%(2006)%'\n       OR @.note like '%(2007)%')": 1,
+        "(@.note like '%(co-production)%')": 1
+      }
+    }
+  },
+  "company_type": {
+    "kind": {
+      "seen-with": [
+        "movie_companies"
+      ],
+      "__templates__": {
+        "@.kind ='production companies'": 1,
+        "@.kind != 'production companies'": 1,
+        "@.kind IS NOT NULL": 1,
+        "@.kind = 'production companies'": 1,
+        "(@.kind ='production companies'\n       OR @.kind = 'distributors')": 1
+      }
+    }
+  },
+  "movie_info": {
+    "info": {
+      "seen-with": [],
+      "__templates__": {
+        "@.info IN ('Germany',\n                  'German')": 1,
+        "@.info IN ('Sweden',\n                  'Germany',\n                  'Swedish',\n                  'German')": 1,
+        "@.info IN ('Germany',\n                  'German',\n                  'USA',\n                  'American')": 1,
+        "@.info in ('Horror',\n                  'Action',\n                  'Sci-Fi',\n                  'Thriller',\n                  'Crime',\n                  'War')": 1,
+        "@.info in ('Horror',\n                  'Thriller')": 1,
+        "@.info IN ('Sweden',\n                  'Norway',\n                  'Germany',\n                  'Denmark',\n                  'Swedish',\n                  'Denish',\n                  'Norwegian',\n                  'German',\n                  'USA',\n                  'American')": 1,
+        "@.info like 'USA:% 200%'": 1,
+        "@.info IN ('Sweden',\n                  'Norway',\n                  'Germany',\n                  'Denmark',\n                  'Swedish',\n                  'Danish',\n                  'Norwegian',\n                  'German',\n                  'USA',\n                  'American')": 1,
+        "@.info IN ('Bulgaria')": 1,
+        "(@.info like 'USA:% 199%'\n       OR @.info like 'USA:% 200%')": 1,
+        "@.info IS NOT NULL": 1,
+        "@.info IN ('Sweden',\n                  'Norway',\n                  'Germany',\n                  'Denmark',\n                  'Swedish',\n                  'Denish',\n                  'Norwegian',\n                  'German')": 1,
+        "(@.info like 'Japan:%201%'\n       OR @.info like 'USA:%201%')": 1,
+        "(@.info like 'Japan:%200%'\n       OR @.info like 'USA:%200%')": 1,
+        "@.info = 'Horror'": 1,
+        "@.info like 'USA:%200%'": 1,
+        "@.info IN ('Sweden',\n                  'Norway',\n                  'Germany',\n                  'Denmark',\n                  'Swedish',\n                  'Denish',\n                  'Norwegian',\n                  'German',\n                  'English')": 1,
+        "@.info in ('Drama',\n                  'Horror')": 1,
+        "@.info IN ('USA',\n                  'America')": 1,
+        "(@.info like 'Japan:%2007%'\n       OR @.info like 'USA:%2008%')": 1,
+        "@.info in ('Drama',\n                  'Horror',\n                  'Western',\n                  'Family')": 1
+      }
+    },
+    "note": {
+      "seen-with": [],
+      "__templates__": {
+        "@.note IS NULL": 1,
+        "@.note like '%internet%'": 1
+      }
+    }
+  },
+  "comp_cast_type": {
+    "kind": {
+      "seen-with": [
+        "complete_cast"
+      ],
+      "__templates__": {
+        "@.kind in ('cast',\n                    'crew')": 1,
+        "@.kind = 'complete'": 1,
+        "@.kind = 'cast'": 1,
+        "@.kind ='complete+verified'": 1,
+        "@.kind = 'crew'": 1,
+        "@.kind != 'complete+verified'": 1,
+        "@.kind = 'complete+verified'": 1,
+        "@.kind like '%complete%'": 1,
+        "@.kind ='cast'": 1,
+        "@.kind like 'complete%'": 1
+      }
+    }
+  },
+  "kind_type": {
+    "kind": {
+      "seen-with": [
+        "title"
+      ],
+      "__templates__": {
+        "@.kind in ('movie',\n                  'episode')": 1,
+        "@.kind in ('movie')": 1,
+        "@.kind ='movie'": 1,
+        "@.kind = 'movie'": 1,
+        "@.kind in ('movie',\n                  'tv movie',\n                  'video movie',\n                  'video game')": 1,
+        "@.kind in ('tv series',\n                   'episode')": 1,
+        "@.kind in ('tv series')": 1
+      }
+    }
+  },
+  "movie_info_idx": {
+    "info": {
+      "seen-with": [],
+      "__templates__": {
+        "@.info < '7.0'": 1,
+        "@.info > '8.0'": 1,
+        "@.info > '9.0'": 1,
+        "@.info > '6.5'": 1,
+        "@.info < '8.5'": 1,
+        "@.info > '6.0'": 1,
+        "@.info > '2.0'": 1,
+        "@.info > '7.0'": 1,
+        "@.info < '3.5'": 1,
+        "@.info > '5.0'": 1,
+        "@.info < '3.0'": 1
+      }
+    }
+  },
+  "aka_name": {
+    "name": {
+      "seen-with": [],
+      "__templates__": {
+        "@.name LIKE '%a%'": 1,
+        "(@.name LIKE '%a%'\n       OR @.name LIKE 'A%')": 1,
+        "@.name IS NOT NULL": 1
+      }
+    }
+  },
+  "person_info": {
+    "note": {
+      "seen-with": [],
+      "__templates__": {
+        "@.note ='Volker Boehm'": 1,
+        "@.note IS NOT NULL": 1
+      }
+    }
+  },
+  "char_name": {
+    "name": {
+      "seen-with": [
+        "cast_info"
+      ],
+      "__templates__": {
+        "(@.name like '%man%'\n       OR @.name like '%Man%')": 1,
+        "@.name IS NOT NULL": 1,
+        "@.name = 'Queen'": 1,
+        "@.name not like '%Sherlock%'": 1,
+        "(@.name like '%Tony%Stark%'\n       OR @.name like '%Iron%Man%')": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+duckdb
+pandas
+numpy
+networkx
+sqlparse
+matplotlib
+scikit-learn
