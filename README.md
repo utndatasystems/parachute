@@ -12,19 +12,25 @@ Then install the required packages:
 
 `pip install -r requirements.txt`
 
-## Build iMDB Database
+## Build IMDb Database
 
 Use `data-loader.ipynb` to load IMDb into `duckdb`.
 
 This will create a `.duckdb` file: `dbs/imdb.duckdb`.
 
+## Frozen `duckdb` plans
+
+To have frozen duckdb plans, please download and compile our `duckdb` branch, available at:
+
+https://github.com/stoianmihail/duckdb-parachute/tree/stoian-card-est
+
 ## SIP repository
 
-To download `duckdb` with frozen plans, please download [this](https://github.com/stoianmihail/duckdb-parachute/tree/stoian-card-est) branch.
+We adapt Andi Zimmerer's implementation of SIP in DuckDB v1.2: https://github.com/andizimmerer/duckdb/tree/azimmerer/sideways-information-passingm, as follows:
+- Bound the bloom-filter size (this avoids an OS-`kill` due to excessive allocation in CEB): https://github.com/utndatasystems/duckdb-adaptive-sip/tree/stoian-adaptive-sip.
+- Frozen plans for SIP: https://github.com/utndatasystems/duckdb-adaptive-sip/tree/stoian-adaptive-sip
 
-To download our SIP implementation in `duckdb` (with bloom-filter size upper-bound), please use [this](https://github.com/utndatasystems/duckdb-adaptive-sip/tree/stoian-adaptive-sip) branch.
-
-To download the SIP implementation with _frozen_ duckdb plans, use [this](https://github.com/utndatasystems/duckdb-adaptive-sip/tree/stoian-adaptive-sip) branch.
+To this end, download them and compile the corresponding binaries.
 
 ## Building `parachute`
 
