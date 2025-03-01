@@ -44,10 +44,35 @@ python build-script.py  --pbw 4 --data-dir data/imdb --workload-dir workload/job
 
 ## Benchmark
 
+Before you start, you should compile the corresponding binaries.
+
+The benchmark results are stored into `query-log`.
+
+### `duckdb`
+
+You can install `duckdb` from the [official page](https://duckdb.org/docs/installation/?version=stable&environment=cli&platform=macos&download_method=direct).
+
+```
+./run-script.sh data/imdb/ workload/job <your_duckdb_binary> duckdb 1
+```
+
+### `sip`
+
+```
+./run-script.sh data/imdb/ workload/job ../dev/duckdb-adaptive-sip/build/release/duckdb sip 1
+```
+
+
 ### vanilla `parachute`:
 
 ```
 ./run-script.sh data/imdb/ workload/job ../dev/duckdb-parachute/build/release/duckdb parachute 1
+```
+
+or, individually (single-threaded): E.g., `altitude = 2`, `opt = 0`.
+
+```
+./bench-utils/run-queries.sh dbs/job_imdb-parachute-4-0-1.duckdb data/imdb workload/job/ 1 ../dev/duckdb-parachute/build/release/duckdb parachute-4-0-1-2-0
 ```
 
 ### `parachute[duckdb + sip]`:
@@ -56,8 +81,8 @@ python build-script.py  --pbw 4 --data-dir data/imdb --workload-dir workload/job
 ./run-script.sh data/imdb/ workload/job ../dev/duckdb-frozen-plans/build/release/duckdb sip_parachute 1
 ```
 
-or, individually (single-threaded): E.g., `altitude = 3`, `opt = 0`.
+or, individually (single-threaded): E.g., `altitude = 2`, `opt = 0`.
 
 ```
-./bench-utils/run-queries.sh dbs/job_imdb-parachute-4-0-1.duckdb data/imdb workload/job/ 1 ../dev/duckdb-frozen-plans/build/release/duckdb parachute-4-0-1-3-0
+./bench-utils/run-queries.sh dbs/job_imdb-parachute-4-0-1.duckdb data/imdb workload/job/ 1 ../dev/duckdb-frozen-plans/build/release/duckdb sip_parachute-4-0-1-2-0
 ```
