@@ -56,18 +56,17 @@ The benchmark results are stored into `query-log`.
 
 ### `duckdb`
 
-You can install `duckdb` from the [official page](https://duckdb.org/docs/installation/?version=stable&environment=cli&platform=macos&download_method=direct).
+You can install `duckdb` from the [official page](https://duckdb.org/docs/installation/?version=stable&environment=cli&platform=macos&download_method=direct). Note: We used [v1.2.0](https://github.com/duckdb/duckdb/releases/download/v1.2.0/duckdb_cli-linux-amd64.zip).
 
 ```
-./run-script.sh data/imdb/ workload/job <your_duckdb_binary> duckdb 1
+./bench-utils/run-queries.sh dbs/imdb.duckdb data/imdb workload/job/ 1 <your_duckdb_binary> duckdb
 ```
 
 ### `sip`
 
 ```
-./run-script.sh data/imdb/ workload/job ../dev/duckdb-adaptive-sip/build/release/duckdb sip 1
+./bench-utils/run-queries.sh dbs/imdb.duckdb data/imdb workload/job/ 1 ../dev/duckdb-adaptive-sip/build/release/duckdb sip
 ```
-
 
 ### vanilla `parachute`:
 
