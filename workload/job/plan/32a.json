@@ -1,0 +1,173 @@
+{
+  "name": "UNGROUPED_AGGREGATE",
+  "children": [
+    {
+      "name": "PROJECTION",
+      "children": [
+        {
+          "name": "HASH_JOIN",
+          "children": [
+            {
+              "name": "SEQ_SCAN ",
+              "children": [],
+              "extra_info": {
+                "Table": "title",
+                "Type": "Sequential Scan",
+                "Projections": [
+                  "id",
+                  "title"
+                ],
+                "Filters": "id>=2 AND id<=186175",
+                "Estimated Cardinality": "2528312"
+              }
+            },
+            {
+              "name": "HASH_JOIN",
+              "children": [
+                {
+                  "name": "SEQ_SCAN ",
+                  "children": [],
+                  "extra_info": {
+                    "Table": "title",
+                    "Type": "Sequential Scan",
+                    "Projections": [
+                      "id",
+                      "title"
+                    ],
+                    "Filters": "id>=284 AND id<=2524994",
+                    "Estimated Cardinality": "2528312"
+                  }
+                },
+                {
+                  "name": "HASH_JOIN",
+                  "children": [
+                    {
+                      "name": "SEQ_SCAN ",
+                      "children": [],
+                      "extra_info": {
+                        "Table": "link_type",
+                        "Type": "Sequential Scan",
+                        "Projections": [
+                          "id",
+                          "link"
+                        ],
+                        "Filters": "id<=17",
+                        "Estimated Cardinality": "18"
+                      }
+                    },
+                    {
+                      "name": "HASH_JOIN",
+                      "children": [
+                        {
+                          "name": "SEQ_SCAN ",
+                          "children": [],
+                          "extra_info": {
+                            "Table": "movie_link",
+                            "Type": "Sequential Scan",
+                            "Projections": [
+                              "movie_id",
+                              "linked_movie_id",
+                              "link_type_id"
+                            ],
+                            "Estimated Cardinality": "29997"
+                          }
+                        },
+                        {
+                          "name": "PROJECTION",
+                          "children": [
+                            {
+                              "name": "FILTER",
+                              "children": [
+                                {
+                                  "name": "HASH_JOIN",
+                                  "children": [
+                                    {
+                                      "name": "SEQ_SCAN ",
+                                      "children": [],
+                                      "extra_info": {
+                                        "Table": "movie_keyword",
+                                        "Type": "Sequential Scan",
+                                        "Projections": [
+                                          "keyword_id",
+                                          "movie_id"
+                                        ],
+                                        "Estimated Cardinality": "4523930"
+                                      }
+                                    },
+                                    {
+                                      "name": "SEQ_SCAN ",
+                                      "children": [],
+                                      "extra_info": {
+                                        "Table": "keyword",
+                                        "Type": "Sequential Scan",
+                                        "Projections": "id",
+                                        "Filters": "keyword='10,000-mile-club'",
+                                        "Estimated Cardinality": "2"
+                                      }
+                                    }
+                                  ],
+                                  "extra_info": {
+                                    "Join Type": "INNER",
+                                    "Conditions": "keyword_id = id",
+                                    "Estimated Cardinality": "69"
+                                  }
+                                }
+                              ],
+                              "extra_info": {
+                                "Expression": "(movie_id <= 186175)",
+                                "Estimated Cardinality": "69"
+                              }
+                            }
+                          ],
+                          "extra_info": {
+                            "Projections": "#0",
+                            "Estimated Cardinality": "69"
+                          }
+                        }
+                      ],
+                      "extra_info": {
+                        "Join Type": "INNER",
+                        "Conditions": "movie_id = movie_id",
+                        "Estimated Cardinality": "1"
+                      }
+                    }
+                  ],
+                  "extra_info": {
+                    "Join Type": "INNER",
+                    "Conditions": "id = link_type_id",
+                    "Estimated Cardinality": "1"
+                  }
+                }
+              ],
+              "extra_info": {
+                "Join Type": "INNER",
+                "Conditions": "id = linked_movie_id",
+                "Estimated Cardinality": "1"
+              }
+            }
+          ],
+          "extra_info": {
+            "Join Type": "INNER",
+            "Conditions": "id = movie_id",
+            "Estimated Cardinality": "2"
+          }
+        }
+      ],
+      "extra_info": {
+        "Projections": [
+          "link",
+          "title",
+          "title"
+        ],
+        "Estimated Cardinality": "2"
+      }
+    }
+  ],
+  "extra_info": {
+    "Aggregates": [
+      "min(#0)",
+      "min(#1)",
+      "min(#2)"
+    ]
+  }
+}
