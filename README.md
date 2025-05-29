@@ -28,7 +28,7 @@ Install the required packages:
 
 ## 🧱 Building `parachute`
 
-Build parachute columns of bit-width `pbw` $\in \{2, 4, 8, 16\}$.
+Build parachute columns of bit-width `pbw` $\in$ &#123;2, 4, 8, 16&#125;.
 
 ```
 ./build-script.sh metadata/imdb workload/job
