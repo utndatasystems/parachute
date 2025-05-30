@@ -57,7 +57,7 @@ DuckDB v1.2.0:
 DuckDB v1.2.0 + PSF:
 
 ```
-./bench-utils/run-queries.sh dbs/imdb.duckdb metadata/imdb workload/job/ 1 ../dev/stoian-psf/build/release/duckdb sip
+./bench-utils/run-queries.sh dbs/imdb.duckdb metadata/imdb workload/job/ 1 ../dev/psf/build/release/duckdb sip
 ```
 
 ### <img src="assets/duckdb.png" alt="duckdb" style="height: 1em;"> + RPT: `rpt`
@@ -74,13 +74,13 @@ Official RPT implementation by Zhao et al. ([GitHub](https://github.com/embryo-l
 To run all `parachute[duckdb]` configurations:
 
 ```
-./run-script.sh metadata/imdb/ workload/job ../dev/stoian-duckdb-frozen-plans/build/release/duckdb parachute 1
+./run-script.sh metadata/imdb/ workload/job ../dev/duckdb-v1.2.0-frozen-plans/build/release/duckdb parachute 1
 ```
 
 or, individually (single-threaded), e.g., `altitude = 3`, `opt = 0`:
 
 ```
-./bench-utils/run-queries.sh dbs/job_imdb-parachute-4-0-1.duckdb metadata/imdb workload/job/ 1 ../dev/stoian-duckdb-v1.2.0-frozen-plans/build/release/duckdb parachute-4-0-1-3-0
+./bench-utils/run-queries.sh dbs/job_imdb-parachute-4-0-1.duckdb metadata/imdb workload/job/ 1 ../dev/duckdb-v1.2.0-frozen-plans/build/release/duckdb parachute-4-0-1-3-0
 ```
 
 ### 🪂(<img src="assets/duckdb.png" alt="duckdb" style="height: 1em;"> + PSF): `parachute[duckdb + psf]`
@@ -88,11 +88,11 @@ or, individually (single-threaded), e.g., `altitude = 3`, `opt = 0`:
 To run all `parachute[duckdb + psf]` configurations:
 
 ```
-./run-script.sh metadata/imdb/ workload/job ../dev/stoian-psf-frozen-plans/build/release/duckdb sip_parachute 1
+./run-script.sh metadata/imdb/ workload/job ../dev/psf-frozen-plans/build/release/duckdb sip_parachute 1
 ```
 
 or, individually (single-threaded), e.g., `altitude = 2`, `opt = 0`.
 
 ```
-./bench-utils/run-queries.sh dbs/job_imdb-parachute-4-0-1.duckdb metadata/imdb workload/job/ 1 ../dev/stoian-psf-frozen-plans/build/release/duckdb sip_parachute-4-0-1-2-0
+./bench-utils/run-queries.sh dbs/job_imdb-parachute-4-0-1.duckdb metadata/imdb workload/job/ 1 ../dev/psf-frozen-plans/build/release/duckdb sip_parachute-4-0-1-2-0
 ```
