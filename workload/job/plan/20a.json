@@ -1,0 +1,357 @@
+{
+  "name": "UNGROUPED_AGGREGATE",
+  "children": [
+    {
+      "name": "PROJECTION",
+      "children": [
+        {
+          "name": "HASH_JOIN",
+          "children": [
+            {
+              "name": "SEQ_SCAN ",
+              "children": [],
+              "extra_info": {
+                "Table": "name",
+                "Type": "Sequential Scan",
+                "Projections": "id",
+                "Filters": "id<=4061926",
+                "Estimated Cardinality": "4167491"
+              }
+            },
+            {
+              "name": "HASH_JOIN",
+              "children": [
+                {
+                  "name": "PROJECTION",
+                  "children": [
+                    {
+                      "name": "FILTER",
+                      "children": [
+                        {
+                          "name": "SEQ_SCAN ",
+                          "children": [],
+                          "extra_info": {
+                            "Table": "char_name",
+                            "Type": "Sequential Scan",
+                            "Projections": [
+                              "name",
+                              "id"
+                            ],
+                            "Estimated Cardinality": "3140339"
+                          }
+                        }
+                      ],
+                      "extra_info": {
+                        "Expression": "(((name ~~ '%Tony%Stark%') OR (name ~~ '%Iron%Man%')) AND (NOT contains(name, 'Sherlock')))",
+                        "Estimated Cardinality": "628067"
+                      }
+                    }
+                  ],
+                  "extra_info": {
+                    "Projections": "#1",
+                    "Estimated Cardinality": "628067"
+                  }
+                },
+                {
+                  "name": "HASH_JOIN",
+                  "children": [
+                    {
+                      "name": "SEQ_SCAN ",
+                      "children": [],
+                      "extra_info": {
+                        "Table": "cast_info",
+                        "Type": "Sequential Scan",
+                        "Projections": [
+                          "movie_id",
+                          "person_role_id",
+                          "person_id"
+                        ],
+                        "Filters": "movie_id>=285 AND movie_id<=2525971",
+                        "Estimated Cardinality": "36244344"
+                      }
+                    },
+                    {
+                      "name": "HASH_JOIN",
+                      "children": [
+                        {
+                          "name": "PROJECTION",
+                          "children": [
+                            {
+                              "name": "FILTER",
+                              "children": [
+                                {
+                                  "name": "HASH_JOIN",
+                                  "children": [
+                                    {
+                                      "name": "SEQ_SCAN ",
+                                      "children": [],
+                                      "extra_info": {
+                                        "Table": "keyword",
+                                        "Type": "Sequential Scan",
+                                        "Projections": [
+                                          "keyword",
+                                          "id"
+                                        ],
+                                        "Filters": "optional: keyword IN ('superhero', 'sequel', 'second-part', 'marvel-comics', 'based-on-comic', 'tv-special', 'fight', 'violence')",
+                                        "Estimated Cardinality": "134170"
+                                      }
+                                    },
+                                    {
+                                      "name": "COLUMN_DATA_SCAN",
+                                      "children": [],
+                                      "extra_info": {
+                                        "Estimated Cardinality": "0"
+                                      }
+                                    }
+                                  ],
+                                  "extra_info": {
+                                    "Join Type": "MARK",
+                                    "Conditions": "keyword = #0",
+                                    "Estimated Cardinality": "134170"
+                                  }
+                                }
+                              ],
+                              "extra_info": {
+                                "Expression": "IN (...)",
+                                "Estimated Cardinality": "26834"
+                              }
+                            }
+                          ],
+                          "extra_info": {
+                            "Projections": "#0",
+                            "Estimated Cardinality": "26834"
+                          }
+                        },
+                        {
+                          "name": "HASH_JOIN",
+                          "children": [
+                            {
+                              "name": "SEQ_SCAN ",
+                              "children": [],
+                              "extra_info": {
+                                "Table": "movie_keyword",
+                                "Type": "Sequential Scan",
+                                "Projections": [
+                                  "movie_id",
+                                  "keyword_id"
+                                ],
+                                "Filters": "movie_id>=285",
+                                "Estimated Cardinality": "4523930"
+                              }
+                            },
+                            {
+                              "name": "PROJECTION",
+                              "children": [
+                                {
+                                  "name": "FILTER",
+                                  "children": [
+                                    {
+                                      "name": "HASH_JOIN",
+                                      "children": [
+                                        {
+                                          "name": "HASH_JOIN",
+                                          "children": [
+                                            {
+                                              "name": "HASH_JOIN",
+                                              "children": [
+                                                {
+                                                  "name": "HASH_JOIN",
+                                                  "children": [
+                                                    {
+                                                      "name": "FILTER",
+                                                      "children": [
+                                                        {
+                                                          "name": "SEQ_SCAN ",
+                                                          "children": [],
+                                                          "extra_info": {
+                                                            "Table": "title",
+                                                            "Type": "Sequential Scan",
+                                                            "Projections": [
+                                                              "kind_id",
+                                                              "id",
+                                                              "title"
+                                                            ],
+                                                            "Filters": "production_year>1950",
+                                                            "Estimated Cardinality": "505662"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "extra_info": {
+                                                        "Expression": "(id >= 285)",
+                                                        "Estimated Cardinality": "505662"
+                                                      }
+                                                    },
+                                                    {
+                                                      "name": "SEQ_SCAN ",
+                                                      "children": [],
+                                                      "extra_info": {
+                                                        "Table": "complete_cast",
+                                                        "Type": "Sequential Scan",
+                                                        "Projections": [
+                                                          "movie_id",
+                                                          "subject_id",
+                                                          "status_id"
+                                                        ],
+                                                        "Estimated Cardinality": "135086"
+                                                      }
+                                                    }
+                                                  ],
+                                                  "extra_info": {
+                                                    "Join Type": "INNER",
+                                                    "Conditions": "id = movie_id",
+                                                    "Estimated Cardinality": "33916"
+                                                  }
+                                                },
+                                                {
+                                                  "name": "SEQ_SCAN ",
+                                                  "children": [],
+                                                  "extra_info": {
+                                                    "Table": "kind_type",
+                                                    "Type": "Sequential Scan",
+                                                    "Projections": "id",
+                                                    "Filters": "kind='movie'",
+                                                    "Estimated Cardinality": "1"
+                                                  }
+                                                }
+                                              ],
+                                              "extra_info": {
+                                                "Join Type": "INNER",
+                                                "Conditions": "kind_id = id",
+                                                "Estimated Cardinality": "4845"
+                                              }
+                                            },
+                                            {
+                                              "name": "FILTER",
+                                              "children": [
+                                                {
+                                                  "name": "SEQ_SCAN ",
+                                                  "children": [],
+                                                  "extra_info": {
+                                                    "Table": "comp_cast_type",
+                                                    "Type": "Sequential Scan",
+                                                    "Projections": "id",
+                                                    "Filters": "kind='cast'",
+                                                    "Estimated Cardinality": "1"
+                                                  }
+                                                }
+                                              ],
+                                              "extra_info": {
+                                                "Expression": "(id <= 2)",
+                                                "Estimated Cardinality": "1"
+                                              }
+                                            }
+                                          ],
+                                          "extra_info": {
+                                            "Join Type": "INNER",
+                                            "Conditions": "subject_id = id",
+                                            "Estimated Cardinality": "1211"
+                                          }
+                                        },
+                                        {
+                                          "name": "FILTER",
+                                          "children": [
+                                            {
+                                              "name": "PROJECTION",
+                                              "children": [
+                                                {
+                                                  "name": "FILTER",
+                                                  "children": [
+                                                    {
+                                                      "name": "SEQ_SCAN ",
+                                                      "children": [],
+                                                      "extra_info": {
+                                                        "Table": "comp_cast_type",
+                                                        "Type": "Sequential Scan",
+                                                        "Projections": [
+                                                          "kind",
+                                                          "id"
+                                                        ],
+                                                        "Estimated Cardinality": "4"
+                                                      }
+                                                    }
+                                                  ],
+                                                  "extra_info": {
+                                                    "Expression": "contains(kind, 'complete')",
+                                                    "Estimated Cardinality": "1"
+                                                  }
+                                                }
+                                              ],
+                                              "extra_info": {
+                                                "Projections": "#1",
+                                                "Estimated Cardinality": "1"
+                                              }
+                                            }
+                                          ],
+                                          "extra_info": {
+                                            "Expression": "(id >= 3)",
+                                            "Estimated Cardinality": "1"
+                                          }
+                                        }
+                                      ],
+                                      "extra_info": {
+                                        "Join Type": "INNER",
+                                        "Conditions": "status_id = id",
+                                        "Estimated Cardinality": "302"
+                                      }
+                                    }
+                                  ],
+                                  "extra_info": {
+                                    "Expression": "(movie_id <= 2525971)",
+                                    "Estimated Cardinality": "302"
+                                  }
+                                }
+                              ],
+                              "extra_info": {
+                                "Projections": [
+                                  "#0",
+                                  "#1"
+                                ],
+                                "Estimated Cardinality": "302"
+                              }
+                            }
+                          ],
+                          "extra_info": {
+                            "Join Type": "INNER",
+                            "Conditions": "movie_id = movie_id",
+                            "Estimated Cardinality": "680"
+                          }
+                        }
+                      ],
+                      "extra_info": {
+                        "Join Type": "INNER",
+                        "Conditions": "id = keyword_id",
+                        "Estimated Cardinality": "140"
+                      }
+                    }
+                  ],
+                  "extra_info": {
+                    "Join Type": "INNER",
+                    "Conditions": "movie_id = movie_id",
+                    "Estimated Cardinality": "2521"
+                  }
+                }
+              ],
+              "extra_info": {
+                "Join Type": "INNER",
+                "Conditions": "id = person_role_id",
+                "Estimated Cardinality": "507"
+              }
+            }
+          ],
+          "extra_info": {
+            "Join Type": "INNER",
+            "Conditions": "id = person_id",
+            "Estimated Cardinality": "511"
+          }
+        }
+      ],
+      "extra_info": {
+        "Projections": "title",
+        "Estimated Cardinality": "511"
+      }
+    }
+  ],
+  "extra_info": {
+    "Aggregates": "min(#0)"
+  }
+}

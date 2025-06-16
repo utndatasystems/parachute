@@ -1,0 +1,758 @@
+{
+  "aka_name": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "person_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "name": {
+        "type": "varchar",
+        "length": null,
+        "not-null": false
+      },
+      "imdb_index": {
+        "type": "varchar",
+        "length": "3",
+        "not-null": false
+      },
+      "name_pcode_cf": {
+        "type": "varchar",
+        "length": "11",
+        "not-null": false
+      },
+      "name_pcode_nf": {
+        "type": "varchar",
+        "length": "11",
+        "not-null": false
+      },
+      "surname_pcode": {
+        "type": "varchar",
+        "length": "11",
+        "not-null": false
+      },
+      "md5sum": {
+        "type": "varchar",
+        "length": "65",
+        "not-null": false
+      }
+    },
+    "fks": {
+      "person_id": {
+        "table": "name",
+        "pk": "id"
+      }
+    }
+  },
+  "aka_title": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "movie_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "title": {
+        "type": "varchar",
+        "length": null,
+        "not-null": false
+      },
+      "imdb_index": {
+        "type": "varchar",
+        "length": "4",
+        "not-null": false
+      },
+      "kind_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "production_year": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "phonetic_code": {
+        "type": "varchar",
+        "length": "5",
+        "not-null": false
+      },
+      "episode_of_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "season_nr": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "episode_nr": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "note": {
+        "type": "varchar",
+        "length": "72",
+        "not-null": false
+      },
+      "md5sum": {
+        "type": "varchar",
+        "length": "32",
+        "not-null": false
+      }
+    },
+    "fks": {
+      "movie_id": {
+        "table": "title",
+        "pk": "id"
+      },
+      "kind_id": {
+        "table": "kind_type",
+        "pk": "id"
+      }
+    }
+  },
+  "cast_info": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "person_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "movie_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "person_role_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "note": {
+        "type": "varchar",
+        "length": null,
+        "not-null": false
+      },
+      "nr_order": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "role_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      }
+    },
+    "fks": {
+      "person_id": {
+        "table": "name",
+        "pk": "id"
+      },
+      "movie_id": {
+        "table": "title",
+        "pk": "id"
+      },
+      "person_role_id": {
+        "table": "char_name",
+        "pk": "id"
+      },
+      "role_id": {
+        "table": "role_type",
+        "pk": "id"
+      }
+    }
+  },
+  "char_name": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "name": {
+        "type": "varchar",
+        "length": null,
+        "not-null": true
+      },
+      "imdb_index": {
+        "type": "varchar",
+        "length": "2",
+        "not-null": false
+      },
+      "imdb_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "name_pcode_nf": {
+        "type": "varchar",
+        "length": "5",
+        "not-null": false
+      },
+      "surname_pcode": {
+        "type": "varchar",
+        "length": "5",
+        "not-null": false
+      },
+      "md5sum": {
+        "type": "varchar",
+        "length": "32",
+        "not-null": false
+      }
+    },
+    "fks": {}
+  },
+  "comp_cast_type": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "kind": {
+        "type": "varchar",
+        "length": "32",
+        "not-null": true
+      }
+    },
+    "fks": {}
+  },
+  "company_name": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "name": {
+        "type": "varchar",
+        "length": null,
+        "not-null": true
+      },
+      "country_code": {
+        "type": "varchar",
+        "length": "6",
+        "not-null": false
+      },
+      "imdb_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "name_pcode_nf": {
+        "type": "varchar",
+        "length": "5",
+        "not-null": false
+      },
+      "name_pcode_sf": {
+        "type": "varchar",
+        "length": "5",
+        "not-null": false
+      },
+      "md5sum": {
+        "type": "varchar",
+        "length": "32",
+        "not-null": false
+      }
+    },
+    "fks": {}
+  },
+  "company_type": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "kind": {
+        "type": "varchar",
+        "length": "32",
+        "not-null": false
+      }
+    },
+    "fks": {}
+  },
+  "complete_cast": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "movie_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "subject_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "status_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      }
+    },
+    "fks": {
+      "movie_id": {
+        "table": "title",
+        "pk": "id"
+      },
+      "subject_id": {
+        "table": "name",
+        "pk": "id"
+      },
+      "status_id": {
+        "table": "comp_cast_type",
+        "pk": "id"
+      }
+    }
+  },
+  "info_type": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "info": {
+        "type": "varchar",
+        "length": "32",
+        "not-null": true
+      }
+    },
+    "fks": {}
+  },
+  "keyword": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "keyword": {
+        "type": "varchar",
+        "length": null,
+        "not-null": true
+      },
+      "phonetic_code": {
+        "type": "varchar",
+        "length": "5",
+        "not-null": false
+      }
+    },
+    "fks": {}
+  },
+  "kind_type": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "kind": {
+        "type": "varchar",
+        "length": "15",
+        "not-null": false
+      }
+    },
+    "fks": {}
+  },
+  "link_type": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "link": {
+        "type": "varchar",
+        "length": "32",
+        "not-null": true
+      }
+    },
+    "fks": {}
+  },
+  "movie_companies": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "movie_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "company_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "company_type_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "note": {
+        "type": "varchar",
+        "length": null,
+        "not-null": false
+      }
+    },
+    "fks": {
+      "movie_id": {
+        "table": "title",
+        "pk": "id"
+      },
+      "company_id": {
+        "table": "company_name",
+        "pk": "id"
+      },
+      "company_type_id": {
+        "table": "company_type",
+        "pk": "id"
+      }
+    }
+  },
+  "movie_info_idx": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "movie_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "info_type_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "info": {
+        "type": "varchar",
+        "length": null,
+        "not-null": true
+      },
+      "note": {
+        "type": "char",
+        "length": "1",
+        "not-null": false
+      }
+    },
+    "fks": {
+      "movie_id": {
+        "table": "title",
+        "pk": "id"
+      },
+      "info_type_id": {
+        "table": "info_type",
+        "pk": "id"
+      }
+    }
+  },
+  "movie_keyword": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "movie_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "keyword_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      }
+    },
+    "fks": {
+      "movie_id": {
+        "table": "title",
+        "pk": "id"
+      },
+      "keyword_id": {
+        "table": "keyword",
+        "pk": "id"
+      }
+    }
+  },
+  "movie_link": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "movie_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "linked_movie_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "link_type_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      }
+    },
+    "fks": {
+      "movie_id": {
+        "table": "title",
+        "pk": "id"
+      },
+      "linked_movie_id": {
+        "table": "title",
+        "pk": "id"
+      },
+      "link_type_id": {
+        "table": "link_type",
+        "pk": "id"
+      }
+    }
+  },
+  "name": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "name": {
+        "type": "varchar",
+        "length": null,
+        "not-null": true
+      },
+      "imdb_index": {
+        "type": "varchar",
+        "length": "9",
+        "not-null": false
+      },
+      "imdb_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "gender": {
+        "type": "char",
+        "length": "1",
+        "not-null": false
+      },
+      "name_pcode_cf": {
+        "type": "varchar",
+        "length": "5",
+        "not-null": false
+      },
+      "name_pcode_nf": {
+        "type": "varchar",
+        "length": "5",
+        "not-null": false
+      },
+      "surname_pcode": {
+        "type": "varchar",
+        "length": "5",
+        "not-null": false
+      },
+      "md5sum": {
+        "type": "varchar",
+        "length": "32",
+        "not-null": false
+      }
+    },
+    "fks": {}
+  },
+  "role_type": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "role": {
+        "type": "varchar",
+        "length": "32",
+        "not-null": true
+      }
+    },
+    "fks": {}
+  },
+  "title": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "title": {
+        "type": "varchar",
+        "length": null,
+        "not-null": true
+      },
+      "imdb_index": {
+        "type": "varchar",
+        "length": "5",
+        "not-null": false
+      },
+      "kind_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "production_year": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "imdb_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "phonetic_code": {
+        "type": "varchar",
+        "length": "5",
+        "not-null": false
+      },
+      "episode_of_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "season_nr": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "episode_nr": {
+        "type": "integer",
+        "length": null,
+        "not-null": false
+      },
+      "series_years": {
+        "type": "varchar",
+        "length": "49",
+        "not-null": false
+      },
+      "md5sum": {
+        "type": "varchar",
+        "length": "32",
+        "not-null": false
+      }
+    },
+    "fks": {
+      "kind_id": {
+        "table": "kind_type",
+        "pk": "id"
+      }
+    }
+  },
+  "movie_info": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "movie_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "info_type_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "info": {
+        "type": "varchar",
+        "length": null,
+        "not-null": true
+      },
+      "note": {
+        "type": "varchar",
+        "length": null,
+        "not-null": false
+      }
+    },
+    "fks": {
+      "movie_id": {
+        "table": "title",
+        "pk": "id"
+      },
+      "info_type_id": {
+        "table": "info_type",
+        "pk": "id"
+      }
+    }
+  },
+  "person_info": {
+    "columns": {
+      "id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "person_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "info_type_id": {
+        "type": "integer",
+        "length": null,
+        "not-null": true
+      },
+      "info": {
+        "type": "varchar",
+        "length": null,
+        "not-null": true
+      },
+      "note": {
+        "type": "varchar",
+        "length": null,
+        "not-null": false
+      }
+    },
+    "fks": {
+      "person_id": {
+        "table": "name",
+        "pk": "id"
+      },
+      "info_type_id": {
+        "table": "info_type",
+        "pk": "id"
+      }
+    }
+  }
+}
